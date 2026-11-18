@@ -1,79 +1,597 @@
+
 <!DOCTYPE html>
-<html lang="pt br">
+<html lang="pt-br">
+
 <head>
-    <title>Portfolio Talyta Freire</title>
-    
-    <style>
-        body {
-            background-color: #f5f3ec;
-            font-family: times news roman;
-            test-align: left;
-        }
-    </style>   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio | Analista de Negócios</title>
+
+  <style>
+    /* CONFIGURAÇÕES GERAIS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #142c28;
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, serif;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* MENU SUPERIOR */
+    header {
+      background-color: #f6f5ee;
+      padding: 20px 0;
+      border-bottom: 1px solid #e8e8df;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: bold;
+      color: #194e43;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #142c28;
+      margin-left: 25px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: #55917c;
+    }
+
+    /* SEÇÃO PRINCIPAL */
+    .hero {
+      background-color: #f6f5ee;
+      padding: 90px 0;
+    }
+
+    .hero-conteudo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .hero-texto {
+      flex: 1;
+    }
+
+    .etiqueta {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #245b50;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
+
+    .hero-texto p {
+      font-size: 15px;
+      color: #52635e;
+      max-width: 450px;
+      margin-bottom: 25px;
+    }
+
+    .botao {
+      display: inline-block;
+      background-color: #194e43;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #286b5b;
+      transform: translateY(-2px);
+    }
+
+    /* IMAGEM PRINCIPAL */
+    .hero-imagem {
+      flex: 1;
+      max-width: 380px;
+      position: relative;
+    }
+
+    .hero-imagem img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 15px 15px 0 #194e43;
+    }
+
+    .legenda-imagem {
+      position: absolute;
+      bottom: 10px;
+      left: 15px;
+      background: white;
+      padding: 7px 15px;
+      border-radius: 25px;
+      font-size: 12px;
+      color: #194e43;
+    }
+
+    /* SOBRE */
+    .sobre {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .sobre-conteudo {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 60px;
+    }
+
+    .numero-secao {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #387064;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .sobre p {
+      font-size: 15px;
+      color: #50645c;
+    }
+
+    /* PROJETOS */
+    .projetos {
+      background-color: #eaf0e7;
+      padding: 80px 0;
+    }
+
+    .projetos-topo {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .descricao {
+      color: #63736b;
+      font-size: 13px;
+    }
+
+    .filtros {
+      display: flex;
+      gap: 8px;
+    }
+
+    .filtro {
+      border: 1px solid #194e43;
+      background: transparent;
+      color: #194e43;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .filtro.ativo,
+    .filtro:hover {
+      background: #194e43;
+      color: white;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      min-height: 200px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px #00000012;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e3efcf;
+      color: #194e43;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #61716a;
+      line-height: 1.5;
+    }
+
+    /* COMPETÊNCIAS */
+    .competencias {
+      background: #194e43;
+      color: white;
+      padding: 75px 0;
+    }
+
+    .competencias .numero-secao {
+      color: #dbeea8;
+    }
+
+    .competencias h2 {
+      margin-bottom: 30px;
+    }
+
+    .lista-competencias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .competencia {
+      background: #e0efa9;
+      color: #194e43;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 13px;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background: #102e28;
+      color: white;
+      padding: 25px 0;
+      font-size: 12px;
+    }
+
+    .rodape-conteudo {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    footer span {
+      color: #dbeea8;
+    }
+
+    /* ADAPTAÇÃO PARA CELULAR */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+
+      .menu {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      .hero-conteudo {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .hero-imagem {
+        width: 90%;
+      }
+
+      .sobre-conteudo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .projetos-topo {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .rodape-conteudo {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1><strong>Transformando perguntas em decisões melhores.</strong></h1>
-    <h2>Teste do título 2</h2>
-    <p>Um espaço para apresentar análises, organizar ideias e mostrar como dados 
-        podem apoiar decisões de negócio. Este é um exemplo para você personalizar.</p>
-    <p>Teste do parágrafo 2</p>
-    <a href https://pt.wikipedia.org/wiki/Imagem_de_sat%C3%A9lite#/media/Ficheiro:Nasa_blue_marble.jpg.>
-       Acessar Planela
-    </a>
-<table>
-    <thead>
-        <tr>
-            <th>Mês</th>
-            <th>Valor</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Janeiro</td>
-            <td>500</td>
-        </tr>
-        <tr>
-            <td>Fevereiro</td>
-            <td>350</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td>Total</td>
-            <td>850</td>
-        </tr>
-    </tfoot>
-</table>
 
-    <ol>
-    <li>Janeiro</li>
-    <li>Fevereiro</li>
-    <li>Março</li>
-    </ol>
+  <!-- MENU SUPERIOR -->
+  <header>
+    <div class="container menu">
+      <div class="logo">Portfólio / AN</div>
 
-    <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-    </ul>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#competencias">Competências</a>
+      </nav>
+    </div>
+  </header>
 
-    <form action="pagina_destino.php" method="post">
-    <input type="text" placeholder="Digite seu nome">
+  <!-- APRESENTAÇÃO PRINCIPAL -->
+  <section class="hero">
+    <div class="container hero-conteudo">
 
-    <p>País:</p>
-    <input type="radio" name="pais"> Nacional
-    <input type="radio" name="pais"> Estrangeiro
+      <div class="hero-texto">
+        <div class="etiqueta">
+          PORTFÓLIO DEMONSTRATIVO · ANALISTA DE NEGÓCIOS
+        </div>
 
-    <p>
-        <input type="checkbox">
-        Concorda com os termos?
-    </p>
+        <h1>
+          Transformando perguntas em decisões melhores.
+        </h1>
 
-    <input type="submit" value="Enviar">
-</form>
+        <p>
+          Um espaço para apresentar análises, organizar
+          ideias e mostrar como dados podem apoiar
+          decisões de negócio. Este é um exemplo
+          para você personalizar.
+        </p>
 
-</body>    
+        <a href="#projetos" class="botao">
+          Explorar projetos →
+        </a>
+      </div>
+
+      <div class="hero-imagem">
+        <img
+          src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800"
+          alt="Profissionais trabalhando juntos"
+        >
+
+        <span class="legenda-imagem">
+          Do insight à ação
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="sobre" id="sobre">
+    <div class="container sobre-conteudo">
+
+      <div>
+        <div class="numero-secao">
+          01 / APRESENTAÇÃO
+        </div>
+
+        <h2>Sobre o meu trabalho</h2>
+      </div>
+
+      <div>
+        <p>
+          Gosto de conectar contexto, pessoas e números
+          para entender desafios e encontrar oportunidades.
+          Aqui você pode substituir este texto pela sua
+          trajetória, suas ferramentas favoritas e os
+          resultados que ajudou a construir.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="projetos" id="projetos">
+    <div class="container">
+
+      <div class="projetos-topo">
+        <div>
+          <div class="numero-secao">
+            02 / TRABALHOS
+          </div>
+
+          <h2>Projetos em destaque</h2>
+
+          <p class="descricao">
+            Exemplos fictícios para testar a estrutura
+            do portfólio.
+          </p>
+        </div>
+
+        <div class="filtros">
+          <button class="filtro ativo" data-filtro="todos">
+            Todos
+          </button>
+
+          <button class="filtro" data-filtro="dados">
+            Dados
+          </button>
+
+          <button class="filtro" data-filtro="processos">
+            Processos
+          </button>
+        </div>
+      </div>
+
+      <div class="cards">
+
+        <!-- PROJETO 1 -->
+        <article class="card" data-categoria="dados">
+          <span class="tag">DADOS</span>
+
+          <h3>Painel de indicadores</h3>
+
+          <p>
+            Organização de métricas essenciais
+            para acompanhar tendências e
+            facilitar reuniões de planejamento.
+          </p>
+        </article>
+
+        <!-- PROJETO 2 -->
+        <article class="card" data-categoria="processos">
+          <span class="tag">PROCESSOS</span>
+
+          <h3>Jornada do cliente</h3>
+
+          <p>
+            Mapeamento de etapas e pontos
+            de atrito para identificar melhorias
+            na experiência do cliente.
+          </p>
+        </article>
+
+        <!-- PROJETO 3 -->
+        <article class="card" data-categoria="dados">
+          <span class="tag">DADOS</span>
+
+          <h3>Análise de oportunidades</h3>
+
+          <p>
+            Comparação de cenários e elaboração
+            de recomendações para orientar
+            prioridades de negócio.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETÊNCIAS -->
+  <section class="competencias" id="competencias">
+    <div class="container">
+
+      <div class="numero-secao">
+        03 / FERRAMENTAS
+      </div>
+
+      <h2>Competências em foco</h2>
+
+      <div class="lista-competencias">
+        <span class="competencia">Análise de dados</span>
+        <span class="competencia">Mapeamento de processos</span>
+        <span class="competencia">Indicadores de desempenho</span>
+        <span class="competencia">Comunicação de insights</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container rodape-conteudo">
+      <p>Portfólio / AN</p>
+
+      <span>
+        Protótipo de estudo · Personalize com seus próprios projetos.
+      </span>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Seleciona os botões de filtro
+    const botoes = document.querySelectorAll(".filtro");
+
+    // Seleciona os cartões dos projetos
+    const projetos = document.querySelectorAll(".card");
+
+    // Adiciona o evento de clique em cada botão
+    botoes.forEach(function(botao) {
+
+      botao.addEventListener("click", function() {
+
+        // Descobre qual filtro foi selecionado
+        const filtroSelecionado = botao.dataset.filtro;
+
+        // Remove a seleção anterior
+        botoes.forEach(function(item) {
+          item.classList.remove("ativo");
+        });
+
+        // Marca o botão clicado
+        botao.classList.add("ativo");
+
+        // Mostra ou esconde os projetos
+        projetos.forEach(function(projeto) {
+
+          const categoria = projeto.dataset.categoria;
+
+          if (
+            filtroSelecionado === "todos" ||
+            filtroSelecionado === categoria
+          ) {
+            projeto.style.display = "block";
+          } else {
+            projeto.style.display = "none";
+          }
+
+        });
+
+      });
+
+    });
+  </script>
+
+</body>
 </html>
+
 
 
 
